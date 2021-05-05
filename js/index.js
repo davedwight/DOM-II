@@ -64,13 +64,15 @@ window.addEventListener('load', function(event){
 });
 
 // change text color of whatever element is clicked
-document.addEventListener('click', function(event){
-    event.target.style.color = "red";
-});
+// document.addEventListener('click', function(event){
+//     event.target.style.backgroundColor = "red";
+//     console.log('currentTarget: ', event.currentTarget);
+//     event.stopPropagation();
+// });
 
 // change text color of whatever element is double clicked
 document.addEventListener('dblclick', function(event){
-    event.target.style.color = "blue";
+    event.target.style.backgroundColor = "blue";
 })
 
 // change background color on window resize
@@ -86,6 +88,25 @@ document.addEventListener('copy', function(event){
 })
 
 
+// prevent default behavior of nav links to prevent refresh
+Array.from(document.links).forEach(function (link) {
+    link.addEventListener('click', function (event) {
+        event.preventDefault();
+    })
+})
 
 
 
+
+
+const paragraph = document.querySelector('p');
+const intro = document.querySelector('header.intro');
+
+paragraph.addEventListener('click', function(event){
+    paragraph.style.backgroundColor = "green";
+    event.stopPropagation();
+});
+
+intro.addEventListener('click', function(event){
+    intro.style.backgroundColor = "purple";
+});
